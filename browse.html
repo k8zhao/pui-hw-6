@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Fluff Stuff</title>
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;600&display=swap" rel="stylesheet">
+    <!-- javascript -->
+    <script src="main.js" type="text/javascript"></script>
+
+</head>
+
+<body onload="setBrowseImages()">
+    <!-- Navigation bar - different from homepage, black top design -->
+    <div id="mynav">
+        <div id="nav-left">
+            <a id="logo" href="index.html">FluffStuff</a>
+            <a href="browse.html">Shop</a>
+            <a href="about.html">About</a>
+        </div>
+        <div id="nav-right">
+            <input type="text" placeholder="Search...">
+            <a href="cart.html">Cart<span id='cart-counter'></span></a>
+        </div>
+    </div>
+
+    <div class="center">
+        <h2>Pillows</h2>
+    </div>
+
+    <!-- Checkbox filters for pillow products -->
+    <div class="wrapper">
+        <h4>Browse by:</h4>
+        <div class="box" id="filter">
+            <div>
+                <h4>TYPE</h4>
+                <input type="checkbox" id="couch" name="couch">
+                <label for="couch">Couch</label>
+                <br>
+                <input type="checkbox" id="bed" name="bed">
+                <label for="bed">Bed</label>
+                <br>
+                <input type="checkbox" id="round" name="round">
+                <label for="round">Round</label>
+                <br>
+                <input type="checkbox" id="floor-pouf" name="floor-pouf">
+                <label for="floor-pouf">Floor Pouf</label>
+            </div>
+            <div>
+                <h4>COLOR</h4>
+                <input type="checkbox" id="after-school" name="after-school" onclick="checkFilter(this)">
+                <label for="after-school">After School Special</label>
+                <br>
+                <input type="checkbox" id="morning-haze" name="morning-haze" onclick="checkFilter(this)">
+                <label for="morning-haze">Morning Haze</label>
+                <br>
+                <input type="checkbox" id="cozy-denim" name="cozy-denim" onclick="checkFilter(this)">
+                <label for="cozy-denim">Cozy Denim</label>
+                <br>
+                <input type="checkbox" id="rainy-day" name="rainy-day" onclick="checkFilter(this)">
+                <label for="rainy-day">Rainy Day</label>
+            </div>
+            <div>
+                <h4>MATERIAL</h4>
+                <input type="checkbox" id="duck-down" name="duck-down">
+                <label for="duck-down">Duck Down</label>
+                <br>
+                <input type="checkbox" id="hypoallergenic" name="hypoallergenic">
+                <label for="hypoallergenic">Hypoallergenic Poly-Blend</label>
+                <br>
+                <input type="checkbox" id="memory-foam" name="memory-foam">
+                <label for="memory-foam">Memory Foam</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Displays all pillow products and prices -->
+    <div class="wrapper">
+        <div class="box">
+            <div onclick="location.href='product.html';" style="cursor: pointer">
+                <img id="browse-img1" src="" alt="couch pillow">
+                <div class="work-info-margin">
+                    <h4>Couch Pillow</h4>
+                    <h5>$25</h5>
+                </div>
+            </div>
+            <div onclick="location.href='product.html';" style="cursor: pointer;">
+                <img id="browse-img2" src="" alt="floor pouf pillow">
+                <div class="work-info-margin">
+                    <h4>Floor Pouf Pillow</h4>
+                    <h5>$25</h5>
+                </div>
+            </div>
+            <div onclick="location.href='product.html';" style="cursor: pointer;">
+                <img id="browse-img3" src="" alt="couch pillow">
+                <div class="work-info-margin">
+                    <h4>Couch Pillow</h4>
+                    <h5>$25</h5>
+                </div>
+            </div>
+            <div onclick="location.href='product.html';" style="cursor: pointer;">
+                <img id="browse-img4" src="" alt="bed pillow">
+                <div class="work-info-margin">
+                    <h4>Bed Pillow</h4>
+                    <h5>$25</h5>
+                </div>
+            </div>
+            <div onclick="location.href='product.html';" style="cursor: pointer;">
+                <img src="images/pillow5.png" alt="couch pillow">
+                <div class="work-info-margin">
+                    <h4>Couch Pillow</h4>
+                    <h5>$25</h5>
+                </div>
+            </div>
+            <div onclick="location.href='product.html';" style="cursor: pointer;">
+                <img src="images/pillow6.png" alt="bed pillow">
+                <div class="work-info-margin">
+                    <h4>Bed Pillow</h4>
+                    <h5>$30</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

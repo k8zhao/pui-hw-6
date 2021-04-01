@@ -1,0 +1,319 @@
+/****** GENERAL STYLING ********/
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+input {
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+select {
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+body {
+    font-family: "Hind", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+}
+
+h3 {
+    font-family: "Hind", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h4 {
+    font-family: "Hind", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h5 {
+    font-family: "Hind", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* actual html form button*/ 
+button {
+    border: none;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    padding: 4px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Hind", sans-serif;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: rgb(0, 0, 0, .7);
+}
+
+/* button class to make link look like button */
+.button {
+    border: none;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    padding: 4px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Hind", sans-serif;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: rgb(0, 0, 0, .7);
+}
+
+.button-labels {
+    display: inline-block;
+    padding: 1em 1em 0 0;
+    font-family: "Hind", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+.white-btn {
+    background-color: white;
+    color: black;
+    border-style: solid; 
+    border-width: thin;
+    border-radius: 4px;
+}
+
+.wrapper {
+    padding: 4em 10%;
+}
+
+.center {
+    padding-top: 4em;
+    text-align: center;
+}
+
+/******* NAVIGATION BAR ********/
+
+#mynav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2em 10%;
+    background-color: #000;
+}
+
+#mynav a {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#mynav a:hover {
+    color: rgb(255, 255, 255, .7);
+}
+
+#mynav > #nav-left > #logo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+}
+
+#nav-left {
+    float: left;
+}
+
+#nav-left a {
+    padding-right: 32px;
+}
+
+#nav-right {
+    justify-self: end;
+}
+
+#nav-right a {
+    padding-left: 32px;
+}
+
+/********* HOME PAGE ********/
+
+#shop-now-btn {
+    padding: 15px 40px;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+}
+
+#shop-now-btn:hover {
+    color: rgb(0, 0, 0, .7);
+}
+
+.btn-right { 
+    float: right;
+    padding: 2em 0;
+}
+
+#homepage-top {
+    padding: 2em 0 10em;
+    background-image: url("images/homepage.png")
+}
+
+.question-btn:focus { 
+    background-color: black;
+    color: white;
+}
+
+/********** BROWSING PAGE **********/
+
+#filter {
+    border-style: solid; 
+    border-width: thin;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+#filter h4 {
+    padding-bottom: .5em;
+    font-weight: 600;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-row-gap: 4em;
+    grid-column-gap: 2em;
+}
+
+/********* PRODUCT DETAIL PAGE *********/
+
+.product-details-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 4em 10%;
+    grid-row-gap: 4em;
+}
+
+.product-images {
+    width: 80%;
+}
+
+.product-detail {
+    padding: 1em 0;
+}
+
+.smaller-product-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1em;
+    margin-top: 1em;
+}
+
+.circle-btn {
+    padding: 20px;
+    border-radius: 100%;
+}
+
+#after-school {
+    background-color: #EFEFEF;
+}
+
+#morning-haze {
+    background-color: #5E5E62;
+}
+
+#cozy-denim {
+    background-color: #EE773A;
+}
+
+#rainy-day {
+    background-color: #809DBE;
+}
+
+/********* CART PAGE *********/
+#shopping-bag {
+    width: 70%;
+    float: left;
+}
+
+#test {
+    width: 70%;
+    float: left;
+}
+
+.product {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr; 
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#order-summary {
+    width: 20%;
+    float: right;
+    border-radius: 4px;
+    padding: 1em;
+    box-shadow: 0px 0px 4px #ACACAC;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex h4{
+    margin-left: 20px;
+}
+
+.flex h5 {
+    margin-left: 20px;
+}
+
+.product input {
+    width: 30%;
+}
+
+.cart_img {
+    width: 130px;
+}
+
+#cart-counter {
+    /* margin-left: 10px;
+    width: 200px;
+    height: 200px;
+    background: red;
+    border-radius: 50%; */
+
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background: gray;
+    text-align:center;
+    border-radius:50%;
+    margin-left:8px;
+}
