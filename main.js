@@ -1,5 +1,12 @@
+/* Global Variables */
+var counter = 0; 
+var cart_items = []; 
+var pillow_id = 0; 
+var pillow_from_storage = JSON.parse(localStorage.getItem("cart"));
+
 /* Object Constructors */
-function Pillow(type, color, material, quantity, image) {
+function Pillow(id, type, color, material, quantity, image) {
+    this.id = id;
     this.type = type;
     this.color = color;
     this.material = material;
@@ -8,14 +15,17 @@ function Pillow(type, color, material, quantity, image) {
     this.image = image;
 }
 
-/* Deletes product from cart  */
+/* Deletes product from cart + local storage */
 function deleteItem(item) {
+    console.log(item.firstElementChild.innerHTML); 
     item.parentNode.removeChild(item);
+    pillow_from_storage.splice(item.firstElementChild.innerHTML, 1); 
+    localStorage.setItem("cart", JSON.stringify(pillow_from_storage));
+    // cart_items.splice(item.firstElementChild.innerHTML, 1); 
+    // console.log(cart_items);
+    // localStorage.setItem("cart", JSON.stringify(cart_items));
 }
 
-/* Global Variables */
-var counter = 0; 
-var cart_items = []; 
 
 /* Functions */
 //Checks 'color' filter and updates browse page
@@ -109,10 +119,11 @@ function addItem() {
         img_src = "images/rainy-day1.png";
     }
 
-    let pillow = new Pillow("Couch", color.value, material.value, quantity.value, img_src);
+    let pillow = new Pillow(pillow_id, "Couch", color.value, material.value, quantity.value, img_src);
+    pillow_id += 1; 
+    console.log(cart_items);
     cart_items.push(pillow); 
     localStorage.setItem("cart", JSON.stringify(cart_items));
-    // localStorage.setItem("currPillow", JSON.stringify(pillow));
 
     counter += 1; 
     localStorage.setItem("cartCounter", counter);
@@ -123,118 +134,69 @@ function addItem() {
 
 // gets pillow from local storage and puts it in cart 
 function getStoragePillow() {
-    let pillow_from_storage = JSON.parse(localStorage.getItem("cart"))
-    var i;
-    for (i = 0; i < pillow_from_storage.length; i++) {
-        console.log(pillow_from_storage[i]);
-        item = pillow_from_storage[i]; 
+    if (pillow_from_storage == null) {
         let cart = document.getElementById("shopping-bag");
         let product_wrapper = document.createElement("div");
-        product_wrapper.setAttribute("class", "product");
-        let prod_details_div = document.createElement("div");
-        prod_details_div.setAttribute("class", "flex");
-        let pillow_img_div = document.createElement("div");
-        let pillow_details_div = document.createElement("div");
-        let quantity_div = document.createElement("div");
-        let price_div = document.createElement("div");
-        let delete_btn_div = document.createElement("div");
-    
-        let pillow_img = document.createElement("img")
-        pillow_img.setAttribute("src", item.image);
-        pillow_img.setAttribute("class", "cart_img");
-        pillow_img_div.appendChild(pillow_img);
-    
-        let pillow_name = document.createElement("h4");
-        pillow_details_div.appendChild(pillow_name);
-        pillow_name.innerText = item.type + " Pillow";
-    
-        let pillow_color = document.createElement("h5");
-        pillow_details_div.appendChild(pillow_color);
-        pillow_color.innerText = "Color: " + item.color;
-    
-        let pillow_material = document.createElement("h5");
-        pillow_details_div.appendChild(pillow_material);
-        pillow_material.innerText = "Material: " + item.material;
-    
-        let quantity = document.createElement("input");
-        quantity.setAttribute("type", "number");
-        quantity_div.appendChild(quantity);
-        quantity.value = item.quantity;
-    
-        price_div.appendChild(document.createTextNode("$25"));
-    
-        let delete_btn = document.createElement("button");
-        delete_btn.setAttribute("class", "delete-item");
-        delete_btn.innerText = "X";
-        delete_btn.setAttribute("onclick", "deleteItem(this.parentNode.parentNode)");
-        delete_btn_div.appendChild(delete_btn);
-    
-        prod_details_div.appendChild(pillow_img_div);
-        prod_details_div.appendChild(pillow_details_div);
-    
-        product_wrapper.appendChild(prod_details_div);
-        product_wrapper.appendChild(quantity_div);
-        product_wrapper.appendChild(price_div);
-        product_wrapper.appendChild(delete_btn_div);
+        let text = document.createElement("h4");
+        text.innerText = "Your Cart is Empty.";
+        product_wrapper.appendChild(text);
         cart.appendChild(product_wrapper);
-    
-        cart.appendChild(document.createElement("hr"));
+    } else {
+        var i;
+        for (i = 0; i < pillow_from_storage.length; i++) {
+            console.log(pillow_from_storage[i]);
+            item = pillow_from_storage[i]; 
+            let cart = document.getElementById("shopping-bag");
+            let product_wrapper = document.createElement("div");
+            product_wrapper.setAttribute("class", "product");
+            let prod_details_div = document.createElement("div");
+            prod_details_div.setAttribute("class", "flex");
+            let pillow_img_div = document.createElement("div");
+            let pillow_details_div = document.createElement("div");
+            let quantity_div = document.createElement("div");
+            let price_div = document.createElement("div");
+            let delete_btn_div = document.createElement("div");
+        
+            let pillow_img = document.createElement("img")
+            pillow_img.setAttribute("src", item.image);
+            pillow_img.setAttribute("class", "cart_img");
+            pillow_img_div.appendChild(pillow_img);
+        
+            let pillow_name = document.createElement("h4");
+            pillow_details_div.appendChild(pillow_name);
+            pillow_name.innerText = item.type + " Pillow";
+        
+            let pillow_color = document.createElement("h5");
+            pillow_details_div.appendChild(pillow_color);
+            pillow_color.innerText = "Color: " + item.color;
+        
+            let pillow_material = document.createElement("h5");
+            pillow_details_div.appendChild(pillow_material);
+            pillow_material.innerText = "Material: " + item.material;
+        
+            let quantity = document.createElement("input");
+            quantity.setAttribute("type", "number");
+            quantity_div.appendChild(quantity);
+            quantity.value = item.quantity;
+        
+            price_div.appendChild(document.createTextNode("$25"));
+        
+            let delete_btn = document.createElement("button");
+            delete_btn.setAttribute("class", "delete-item");
+            delete_btn.innerText = "X";
+            delete_btn.setAttribute("onclick", "deleteItem(this.parentNode.parentNode)");
+            delete_btn_div.appendChild(delete_btn);
+        
+            prod_details_div.appendChild(pillow_img_div);
+            prod_details_div.appendChild(pillow_details_div);
+        
+            product_wrapper.appendChild(prod_details_div);
+            product_wrapper.appendChild(quantity_div);
+            product_wrapper.appendChild(price_div);
+            product_wrapper.appendChild(delete_btn_div);
+            cart.appendChild(product_wrapper);
+        
+            cart.appendChild(document.createElement("hr"));
+        }
     }
-
-    // let counter_from_storage = localStorage.getItem("cartCounter");
-    // let cart_counter_span = document.getElementById("cart-counter"); 
-    // let cart_count = document.createTextNode("(" + counter_from_storage + ")");
-    // cart_counter_span.appendChild(cart_count);
-
-    // let cart = document.getElementById("shopping-bag");
-    // let product_wrapper = document.createElement("div");
-    // product_wrapper.setAttribute("class", "product");
-    // let prod_details_div = document.createElement("div");
-    // prod_details_div.setAttribute("class", "flex");
-    // let pillow_img_div = document.createElement("div");
-    // let pillow_details_div = document.createElement("div");
-    // let quantity_div = document.createElement("div");
-    // let price_div = document.createElement("div");
-    // let delete_btn_div = document.createElement("div");
-
-    // let pillow_img = document.createElement("img")
-    // pillow_img.setAttribute("src", pillow_from_storage.image);
-    // pillow_img.setAttribute("class", "cart_img");
-    // pillow_img_div.appendChild(pillow_img);
-
-    // let pillow_name = document.createElement("h4");
-    // pillow_details_div.appendChild(pillow_name);
-    // pillow_name.innerText = pillow_from_storage.type + " Pillow";
-
-    // let pillow_color = document.createElement("h5");
-    // pillow_details_div.appendChild(pillow_color);
-    // pillow_color.innerText = "Color: " + pillow_from_storage.color;
-
-    // let pillow_material = document.createElement("h5");
-    // pillow_details_div.appendChild(pillow_material);
-    // pillow_material.innerText = "Material: " + pillow_from_storage.material;
-
-    // let quantity = document.createElement("input");
-    // quantity.setAttribute("type", "number");
-    // quantity_div.appendChild(quantity);
-    // quantity.value = pillow_from_storage.quantity;
-
-    // price_div.appendChild(document.createTextNode("$25"));
-
-    // let delete_btn = document.createElement("button");
-    // delete_btn.setAttribute("class", "delete-item");
-    // delete_btn.innerText = "X";
-    // delete_btn.setAttribute("onclick", "deleteItem(this.parentNode.parentNode)");
-    // delete_btn_div.appendChild(delete_btn);
-
-    // prod_details_div.appendChild(pillow_img_div);
-    // prod_details_div.appendChild(pillow_details_div);
-
-    // product_wrapper.appendChild(prod_details_div);
-    // product_wrapper.appendChild(quantity_div);
-    // product_wrapper.appendChild(price_div);
-    // product_wrapper.appendChild(delete_btn_div);
-    // cart.appendChild(product_wrapper);
-
-    // cart.appendChild(document.createElement("hr"));
 }
