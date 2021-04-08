@@ -1,3 +1,3 @@
-# FluffStuff Assignment 6A 
+# FluffStuff Assignment 6 
 
-Look at 'Assignment 6 Notes.pdf' 
+Pillow website for PUI class with fully working shopping cart. 
